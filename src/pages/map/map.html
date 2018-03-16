@@ -1,0 +1,23 @@
+<ion-header padding-top="50px">
+  
+      <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="updateSearchResults()" placeholder="From "></ion-searchbar>
+      <ion-searchbar [(ngModel)]="complete.input" (ionInput)="searchResults()" placeholder="To"></ion-searchbar>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-list [hidden]="autocompleteItems.length == 0">
+    <ion-item *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResult(item)">
+      {{ item.description }}
+    </ion-item>
+  </ion-list>
+
+  <ion-list [hidden]="completeItems.length == 0">
+    <ion-item *ngFor="let item of completeItems" tappable (click)="sSearchResult(item)">
+      {{ item.description }}
+    </ion-item>
+  </ion-list>
+
+  <div id='map'></div>
+</ion-content>
